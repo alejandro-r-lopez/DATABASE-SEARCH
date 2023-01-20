@@ -15,9 +15,9 @@ import { getBeanieBabies, getBeanieZodiac } from './fetch-utils.js';
 const choiceInput = document.querySelector('.choice-input');
 const submitButton = document.querySelector('.submit-button');
 const beanieBabiesSection = document.querySelector('.beanie-babies-section');
+const form = document.querySelector('form');
 
 let beanieBabies = [];
-let zodiacSigns = [];
 
 window.addEventListener('load', async () => {
     const beanies = await getBeanieBabies();
@@ -43,21 +43,26 @@ function renderBeanieBabies() {
 
     for (let beanie of beanieBabies) {
         const beanieBabyEl = document.createElement('div');
+        const beanieBabyTitle = document.createElement('h3');
         const beanieBabyInfo = document.createElement('p');
         const beanieBabyImage = document.createElement('img');
-        beanieBabyInfo.textContent = `${beanie.title}`;
+        beanieBabyTitle.textContent = `${beanie.title}`;
+        beanieBabyInfo.textContent = `My name is ${beanie.title} and my  birthday is ${beanie.birthday} which makes me a ${beanie.astroSign}!`;
+
         beanieBabyImage.src = beanie.image;
 
         beanieBabyEl.classList.add('beanie-style');
         beanieBabyImage.classList.add('beanie-image');
 
-        beanieBabyEl.append(beanieBabyInfo, beanieBabyImage);
+        beanieBabyEl.append(beanieBabyTitle, beanieBabyInfo, beanieBabyImage);
 
         beanieBabiesSection.append(beanieBabyEl);
     }
 }
 
-submitButton.addEventListener('click', async () => {
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const beaniesZodiac = await getBeanieBabies(choiceInput.value);
 
     beanieBabies = beaniesZodiac;

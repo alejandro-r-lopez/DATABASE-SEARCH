@@ -9,7 +9,7 @@ export async function getBeanieBabies(userChoice) {
         let { data, error } = await client
             .from('beanie_babies')
             .select('*')
-            .eq('astroSign', userChoice)
+            .ilike('astroSign', userChoice)
             .limit(100);
         return data;
     }
