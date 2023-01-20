@@ -5,7 +5,7 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getBeanieBabies() {
-    let { data, error } = await client.from('beanie_babies').select('*');
+    let { data, error } = await client.from('beanie_babies').select('*').limit(100);
 
     return data;
 }

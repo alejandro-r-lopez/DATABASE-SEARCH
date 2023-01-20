@@ -15,13 +15,19 @@ import { getBeanieBabies } from './fetch-utils.js';
 const choiceInput = document.querySelector('.choice-input');
 const submitButton = document.querySelector('.submit-button');
 const beanieBabiesSection = document.querySelector('.beanie-babies-section');
-console.log(beanieBabiesSection);
+
 let beanieBabies = [];
 
 window.addEventListener('load', async () => {
     const beanies = await getBeanieBabies();
 
     beanieBabies = beanies;
+
+    renderBeanieBabies();
+});
+
+function renderBeanieBabies() {
+    beanieBabiesSection.textContent = '';
 
     for (let beanie of beanieBabies) {
         const beanieBabyEl = document.createElement('div');
@@ -31,7 +37,5 @@ window.addEventListener('load', async () => {
         beanieBabyEl.append(beanieBabyInfo);
 
         beanieBabiesSection.append(beanieBabyEl);
-
-        return beanieBabiesSection;
     }
-});
+}
