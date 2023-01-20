@@ -33,3 +33,12 @@ header .logo {
 main {
     padding: 20px;
 }
+
+.beanie-style {
+    width: 600px;
+    height: 100px;
+}
+
+.beanie-image {
+    width: 100px;
+}

@@ -10,7 +10,7 @@
 
 // (don't forget to call any display functions you want to run on page load!)
 
-import { getBeanieBabies } from './fetch-utils.js';
+import { getBeanieBabies, getBeanieZodiac } from './fetch-utils.js';
 
 const choiceInput = document.querySelector('.choice-input');
 const submitButton = document.querySelector('.submit-button');
@@ -24,6 +24,8 @@ window.addEventListener('load', async () => {
     beanieBabies = beanies;
 
     renderBeanieBabies();
+
+    const zodiac = await getBeanieZodiac();
 });
 
 function renderBeanieBabies() {
@@ -32,9 +34,14 @@ function renderBeanieBabies() {
     for (let beanie of beanieBabies) {
         const beanieBabyEl = document.createElement('div');
         const beanieBabyInfo = document.createElement('p');
-        beanieBabyInfo.textContent = `My name is ${beanie.title}`;
+        const beanieBabyImage = document.createElement('img');
+        beanieBabyInfo.textContent = `${beanie.title}`;
+        beanieBabyImage.src = beanie.image;
 
-        beanieBabyEl.append(beanieBabyInfo);
+        beanieBabyEl.classList.add('beanie-style');
+        beanieBabyImage.classList.add('beanie-image');
+
+        beanieBabyEl.append(beanieBabyInfo, beanieBabyImage);
 
         beanieBabiesSection.append(beanieBabyEl);
     }
