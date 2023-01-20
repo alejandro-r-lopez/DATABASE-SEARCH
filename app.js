@@ -17,6 +17,7 @@ const submitButton = document.querySelector('.submit-button');
 const beanieBabiesSection = document.querySelector('.beanie-babies-section');
 
 let beanieBabies = [];
+let zodiacSigns = [];
 
 window.addEventListener('load', async () => {
     const beanies = await getBeanieBabies();
@@ -25,7 +26,16 @@ window.addEventListener('load', async () => {
 
     renderBeanieBabies();
 
-    const zodiac = await getBeanieZodiac();
+    const zodiacs = await getBeanieZodiac();
+
+    for (let zodiac of zodiacs) {
+        const choice = document.createElement('option');
+
+        choice.value = zodiac.name;
+        choice.textContent = zodiac.name;
+
+        choiceInput.append(choice);
+    }
 });
 
 function renderBeanieBabies() {
@@ -46,3 +56,11 @@ function renderBeanieBabies() {
         beanieBabiesSection.append(beanieBabyEl);
     }
 }
+
+submitButton.addEventListener('click', async () => {
+    const beaniesZodiac = await getBeanieBabies(choiceInput.value);
+
+    beanieBabies = beaniesZodiac;
+
+    renderBeanieBabies();
+});

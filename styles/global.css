@@ -35,10 +35,18 @@ main {
 }
 
 .beanie-style {
-    width: 600px;
-    height: 100px;
+    width: 480px;
+    height: 160px;
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px;
+    border-radius: 20px;
+    text-indent: 16px;
 }
 
 .beanie-image {
-    width: 100px;
+    width: 160px;
+    height: 160px;
 }
