@@ -1,5 +1,5 @@
 :root {
-    --background: rgb(224, 234, 247);
+    --background: orange;
     --header-background: rgb(254, 251, 245);
     --primary-font: Corbel, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans',
         'Bitstream Vera Sans', 'Liberation Sans', Verdana, 'Verdana Ref', sans-serif;
@@ -30,6 +30,34 @@ header .logo {
     height: 100%;
 }
 
-main {
+.beanie-style {
+    width: 600px;
+    height: 160px;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    margin: 20px;
+    border-radius: 20px;
+    position: relative;
+    text-align: left;
     padding: 20px;
+}
+
+.beanie-image {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 430px;
+    top: 10px;
+    border-radius: 10px;
+}
+
+.choice-input {
+    width: 200px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+p {
+    width: 400px;
+    padding-left: 20px;
 }
